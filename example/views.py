@@ -10,7 +10,8 @@ from pydub.utils import which
 
 # Set the path to ffmpeg and ffprobe directly
 #AudioSegment.ffmpeg = "/bin/ffmpeg"
-AudioSegment.ffprobe = "/bin/ffprobe"
+ffprobe_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'bin', 'ffprobe')
+AudioSegment.ffprobe = ffprobe_path
 
 # Set FFmpeg and FFprobe paths for Pydub
 #os.environ["FFMPEG_BINARY"] = "/bin/ffmpeg"
