@@ -6,16 +6,8 @@ import azure.cognitiveservices.speech as speechsdk
 from pydub import AudioSegment
 
 
-# from pydub.utils import which
-
-# # Set the path to ffmpeg and ffprobe directly
-# #AudioSegment.ffmpeg = "/bin/ffmpeg"
-# ffprobe_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'bin', 'ffprobe')
-# AudioSegment.ffprobe = ffprobe_path
-
-# Set FFmpeg and FFprobe paths for Pydub
-#os.environ["FFMPEG_BINARY"] = "/bin/ffmpeg"
-#os.environ["FFPROBE_BINARY"] = "/bin/ffprobe"
+AudioSegment.ffmpeg = os.getenv("FFMPEG_BINARY", "/usr/bin/ffmpeg")
+AudioSegment.ffprobe = os.getenv("FFPROBE_BINARY", "/usr/bin/ffprobe")
 
 # Home view that shows a welcome message and a button to synthesize speech
 def home_view(request):
