@@ -1,8 +1,24 @@
 {
+  "builds": [
+    {
+      "src": "api/wsgi.py",
+      "use": "@vercel/python",
+      "config": {
+        "maxDuration": 30
+      }
+    }
+  ],
   "routes": [
     {
       "src": "/(.*)",
       "dest": "api/wsgi.py"
     }
-  ]
+  ],
+  "hooks": {
+    "build": "apt-get update && apt-get install -y ffmpeg"
+  },
+  "env": {
+    "FFMPEG_BINARY": "/usr/bin/ffmpeg",
+    "FFPROBE_BINARY": "/usr/bin/ffprobe"
+  }
 }
